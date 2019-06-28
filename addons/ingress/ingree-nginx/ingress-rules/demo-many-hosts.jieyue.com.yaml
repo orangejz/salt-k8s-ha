@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-demo-many-hosts
+  namespace: prom
+  annotations:
+    kuberneters.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: 60m
+spec:
+  rules:
+  - host: man.jieyue.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: alertmanager
+          servicePort: 80
+  - host: prom.jieyue.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus
+          servicePort: 9090

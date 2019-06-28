@@ -1,0 +1,6 @@
+#提前生成自己的证书,根证书默认最大5年,其他证书为20年。
+cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+ls -l ca*
+#查看证书有效期
+cfssl certinfo -cert ca.pem|egrep -C 3 not
+

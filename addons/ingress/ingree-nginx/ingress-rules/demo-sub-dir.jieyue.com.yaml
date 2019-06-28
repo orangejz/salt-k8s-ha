@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-demo-sub-dir
+  namespace: prom
+  annotations:
+    kuberneters.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: 60m
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    name: rewrite
+spec:
+  rules:
+  - host: demo.jieyue.com
+    http:
+      paths:
+      - path: /man/?(.*)
+        backend:
+          serviceName: alertmanager
+          servicePort: 80
+      - path: /grafana/?(.*)
+        backend:
+          serviceName: monitoring-grafana
+          servicePort: 80
+      - path: /?(.*)
+        backend:
+          serviceName: prometheus
+          servicePort: 9090

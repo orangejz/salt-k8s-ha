@@ -1,0 +1,8 @@
+{
+	  "registry-mirrors": ["https://mfa9o6jn.mirror.aliyuncs.com"],
+  	  "insecure-registries" : ["172.16.101.49", "10.50.183.31","image.jieyue.com"],
+          "log-opts": {
+    		"max-size": "100m","max-file": "5"
+  		},
+          "max-concurrent-downloads": 10
+}

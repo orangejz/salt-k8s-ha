@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+#******************************************
+# Author:       Peter Zhao
+# Email:        13810339808@163.com
+# Description:  Salt SSH Roster
+#******************************************
+
+k8s-master1:
+  host: 192.168.56.11
+  user: root
+  priv:  /root/.ssh/id_rsa
+  port: 22
+  minion_opts: 
+    grains:
+      k8s-role: master
+      etcd-role: node
+      etcd-name: etcd-node1
+k8s-master2:
+  host: 192.168.56.17
+  user: root
+  priv:  /root/.ssh/id_rsa
+  port: 22
+  minion_opts:
+    grains:
+      k8s-role: master
+      etcd-role: node
+      etcd-name: etcd-node2
+
+k8s-master3:
+  host: 192.168.56.18
+  user: root
+  priv:  /root/.ssh/id_rsa
+  port: 22
+  minion_opts:
+    grains:
+      k8s-role: master
+      etcd-role: node
+      etcd-name: etcd-node3
+
+k8s-node1:
+  host: 192.168.56.12
+  user: root
+  priv: /root/.ssh/id_rsa
+  port: 22
+  minion_opts:
+    grains:
+      k8s-role: node
+k8s-node2:
+  host: 192.168.56.13
+  user: root
+  priv: /root/.ssh/id_rsa
+  port: 22
+  minion_opts:
+    grains:
+      k8s-role: node
+ha-1:
+  host: 192.168.56.15
+  user: root
+  priv: /root/.ssh/id_rsa
+  port: 22
+ha-2:
+  host: 192.168.56.16
+  user: root
+  priv: /root/.ssh/id_rsa
+  port: 22
